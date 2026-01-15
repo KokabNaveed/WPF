@@ -16,7 +16,7 @@
             <MenuItem Header="Services">
                 <MenuItem Header="Email" Click="EmailMenu_Click"></MenuItem>
 
-                <MenuItem Header="Domain"></MenuItem>
+                <MenuItem Header="Domain" Click="DomainMenu_Click"></MenuItem>
 
                 <MenuItem Header="Software"></MenuItem>
 

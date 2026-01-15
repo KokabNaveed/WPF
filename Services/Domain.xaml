@@ -5,8 +5,131 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SubsrciptionSystem"
         mc:Ignorable="d"
-        Title="Domain" Height="450" Width="800">
+        Title="Domain" 
+        Height="500"
+        Width="850"
+        WindowStartupLocation="CenterScreen">
+
     <Grid>
-        
+        <Border Width="620"
+                Padding="25"
+                CornerRadius="14"
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+
+            <Grid>
+                <!-- Columns -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Rows -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Header -->
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Button -->
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <StackPanel Grid.ColumnSpan="2" Margin="0,0,0,20">
+                    <TextBlock Text="Domain Details"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Enter Your Domain Details"
+                               FontSize="12"
+                               Foreground="Gray"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- LEFT COLUMN -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,15,0">
+                    <TextBlock Text="Domain Name" FontSize="12"/>
+                    <TextBox x:Name="txtDomainName" Height="36" Margin="0,6,0,14" Padding="10"/>
+
+                    <TextBlock Text="Domain Registered Date" FontSize="12"/>
+                    <DatePicker x:Name="dpRegisteredDate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    <TextBlock Text="Renewal Date" FontSize="12"/>
+                    <DatePicker x:Name="dpRenewalDate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    <TextBlock Text="Domain Nameservers2" FontSize="12"/>
+                    <TextBox x:Name="txtdns2" Height="36" Margin="0,6,0,14" Padding="10"/>
+                </StackPanel>
+
+                <!-- RIGHT COLUMN -->
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="15,0,0,0">
+                    <TextBlock Text="Domain Registrar" FontSize="12"/>
+                    <TextBox x:Name="txtdomainRegistrar" Height="36" Margin="0,6,0,14" Padding="10"/>
+
+                    <TextBlock Text="Amount($)" FontSize="12"/>
+                    <TextBox x:Name="txtamount" Height="36" Margin="0,6,0,14" Padding="10"/>
+
+                    <TextBlock Text="Domain Nameservers1" FontSize="12"/>
+                    <PasswordBox x:Name="txtdns1" Height="36" Margin="0,6,0,14" Padding="10"/>
+
+                    <StackPanel Margin="0,6,0,14">
+                        <TextBlock Text="Auto Renew" FontSize="12" Margin="0,0,0,6"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,2,0,0">
+
+                            <ToggleButton x:Name="tglAutoRenew" Width="60" Height="28" Checked="tglAutoRenew_Checked" Unchecked="tglAutoRenew_Unchecked">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Grid>
+                                            <Border x:Name="Switch"
+                                Background="LightGray"
+                                CornerRadius="14"/>
+                                            <Ellipse x:Name="Knob"
+                                 Fill="White"
+                                 Width="24"
+                                 Height="24"
+                                 Margin="2"
+                                 HorizontalAlignment="Left"/>
+                                        </Grid>
+
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsChecked" Value="True">
+                                                <Setter TargetName="Switch" Property="Background" Value="#4F46E5"/>
+                                                <Setter TargetName="Knob" Property="HorizontalAlignment" Value="Right"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+
+                            <TextBlock x:Name="txtAutoRenewStatus"
+                   FontSize="12"
+                   FontWeight="SemiBold"
+                   Margin="10,0,0,0"
+                   VerticalAlignment="Center"
+                   Foreground="Gray"
+                   Text="OFF"/>
+                        </StackPanel>
+                    </StackPanel>
+
+
+
+
+                </StackPanel>
+
+                <!-- SUBMIT BUTTON -->
+                <Button Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        Content="SUBMIT"
+                        Height="42"
+                        Margin="0,10,0,0"
+                        Background="#4F46E5"
+                        Foreground="White"
+                        FontWeight="SemiBold"
+                        Cursor="Hand"
+                        Click="Submit_Click"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

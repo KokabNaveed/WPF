@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SubsrciptionSystem"
         mc:Ignorable="d"
-        Title="Subscription System" Height="450" Width="800" Icon="/Images/icons8-info-48.png"
+        Title="Subscription System" 
+        Height="500" Width="800" 
+        Icon="/Images/icons8-info-48.png"
         WindowStartupLocation="CenterScreen">
 
     <Grid>
@@ -23,7 +25,7 @@
             </Border.Effect>
 
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Exam Management System"
+                <TextBlock Text="Subscription System"
                            FontSize="26"
                            FontWeight="Bold"
                            Foreground="#2c3e50"

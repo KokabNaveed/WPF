@@ -5,8 +5,104 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SubsrciptionSystem"
         mc:Ignorable="d"
-        Title="Software" Height="450" Width="800">
+        Title="Software" 
+        Height="500"
+        Width="850"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Border Width="620"
+             Padding="25"
+             CornerRadius="14"
+             Background="White"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Center">
+
+            <Grid>
+                <!-- Columns -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Rows -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Header -->
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Button -->
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <StackPanel Grid.ColumnSpan="2" Margin="0,0,0,20">
+                    <TextBlock Text="Software Subscription"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Enter Your Details and Choose Plan"
+                            FontSize="12"
+                            Foreground="Gray"
+                            HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- LEFT COLUMN -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,15,0">
+                    <TextBlock Text="Software Name" FontSize="12"/>
+                    <TextBox x:Name="txtSoftwareName" Height="36" Margin="0,6,0,14" Padding="10"/>
+
+                    <TextBlock Text="Plan Type" FontSize="12"/>
+                    <ComboBox x:Name="cmbPlan"
+                         Height="36"
+                         Margin="0,6,0,14"
+                             Padding="10" >
+                        <ComboBoxItem Content="Free"/>
+                        <ComboBoxItem Content="Monthly"/>
+                        <ComboBoxItem Content="Yearly"/>
+                    </ComboBox>
+                    
+                    <TextBlock Text="Email Subscribed With" FontSize="12"/>
+                    <TextBox x:Name="txtemail" Height="36" Margin="0,6,0,14" Padding="10"/>
+
+                    <TextBlock Text="Renewal Date" FontSize="12"/>
+                    <DatePicker x:Name="dpRenewalDate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    
+
+                </StackPanel>
+
+                <!-- RIGHT COLUMN -->
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="15,0,0,0">
+                    <TextBlock Text="Category" FontSize="12"/>
+                    <ComboBox x:Name="cmbCategory"
+                          Height="36"
+                          Margin="0,6,0,14"
+                              Padding="10" >
+                        <ComboBoxItem Content="Software"/>
+                        <ComboBoxItem Content="Accounting"/>
+                        <ComboBoxItem Content="Enterprise"/>
+                    </ComboBox>
+                    <TextBlock Text="Amount($)" FontSize="12"/>
+                    <TextBox x:Name="txtamount" Height="36" Margin="0,6,0,14" Padding="10"/>
+
+                    <TextBlock Text="Subscribed Date" FontSize="12"/>
+                    <DatePicker x:Name="dpSubscribeddate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                </StackPanel>
+
+                <!-- SUBMIT BUTTON -->
+                <Button Grid.Row="5"
+                     Grid.ColumnSpan="2"
+                     Content="SUBMIT"
+                     Height="42"
+                     Margin="0,10,0,0"
+                     Background="#4F46E5"
+                     Foreground="White"
+                     FontWeight="SemiBold"
+                     Cursor="Hand"
+                     Click="Submit_Click"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

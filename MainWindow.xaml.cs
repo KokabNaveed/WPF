@@ -25,6 +25,15 @@ namespace SubsrciptionSystem
             domainWindow.Show();
             this.Close();
         }
+
+        private void SoftwareMenu_Click(object sender, RoutedEventArgs e)
+        {
+           Software softwareWindow = new Software();    
+            softwareWindow.Show();
+            this.Close();
+        }
+
         
+
     }
 }

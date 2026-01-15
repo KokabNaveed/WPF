@@ -23,5 +23,33 @@ namespace SubsrciptionSystem
         {
             InitializeComponent();
         }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            if (dpSubscribeddate.SelectedDate == null ||dpRenewalDate.SelectedDate == null || txtamount.Text == null || txtemail.Text == null || txtSoftwareName.Text == null || cmbCategory.Text == null || cmbPlan.Text == null)
+            {
+                MessageBox.Show("Please Enter all details.",
+                                "Validation Error",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+
+            DateTime registeredDate = dpSubscribeddate.SelectedDate.Value;
+            DateTime renewalDate = dpRenewalDate.SelectedDate.Value;
+
+            if (renewalDate <= registeredDate)
+            {
+                MessageBox.Show("Renewal date must be later than registered date.",
+                                "Invalid Date",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                return;
+            }
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

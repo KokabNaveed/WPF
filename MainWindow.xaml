@@ -18,13 +18,14 @@
 
                 <MenuItem Header="Domain" Click="DomainMenu_Click"></MenuItem>
 
-                <MenuItem Header="Software"></MenuItem>
+                <MenuItem Header="Software" Click="SoftwareMenu_Click"></MenuItem>
 
             </MenuItem>
+            <MenuItem Header="Email" Click="EmailMenu_Click"></MenuItem>
 
-            <MenuItem Header="Contact us"></MenuItem>
+            <MenuItem Header="Domain" Click="DomainMenu_Click"></MenuItem>
 
-            <MenuItem Header="About Us"></MenuItem>
+            <MenuItem Header="Software" Click="SoftwareMenu_Click"></MenuItem>
         </Menu>
         </DockPanel>
 </Window>

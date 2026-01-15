@@ -72,7 +72,7 @@
                     <TextBox x:Name="txtamount" Height="36" Margin="0,6,0,14" Padding="10"/>
 
                     <TextBlock Text="Domain Nameservers1" FontSize="12"/>
-                    <PasswordBox x:Name="txtdns1" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtdns1" Height="36" Margin="0,6,0,14" Padding="10"/>
 
                     <StackPanel Margin="0,6,0,14">
                         <TextBlock Text="Auto Renew" FontSize="12" Margin="0,0,0,6"/>

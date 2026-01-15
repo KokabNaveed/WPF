@@ -52,9 +52,9 @@ namespace SubsrciptionSystem
         {
             bool isAutoRenew = tglAutoRenew.IsChecked == true;
 
-            if (dpRegisteredDate.SelectedDate == null)
+            if (dpRegisteredDate.SelectedDate == null || txtDomainName.Text == null || txtdomainRegistrar.Text == null || txtdns2.Text == null || txtdns1.Text == null || txtamount.Text==null)
             {
-                MessageBox.Show("Please select registered date.",
+                MessageBox.Show("Please Enter all details.",
                                 "Validation Error",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);

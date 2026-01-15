@@ -10,45 +10,21 @@
         Icon="/Images/icons8-info-48.png"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
+        <DockPanel>
+            <Label HorizontalContentAlignment="Center" Name="welcome" Content="Welcome To Subscription System" Background="Black" Foreground="White" Height="200"  DockPanel.Dock="Top" ></Label>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Services">
+                <MenuItem Header="Email" Click="EmailMenu_Click"></MenuItem>
 
-        <Border Background="White"
-                CornerRadius="10"
-                Padding="30"
-                Margin="100"
-                BorderBrush="#bdc3c7"
-                BorderThickness="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            <Border.Effect>
-                <DropShadowEffect Color="Gray" BlurRadius="10" ShadowDepth="3"/>
-            </Border.Effect>
+                <MenuItem Header="Domain"></MenuItem>
 
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Subscription System"
-                           FontSize="26"
-                           FontWeight="Bold"
-                           Foreground="#2c3e50"
-                           Margin="0,0,0,20"
-                           TextAlignment="Center"/>
+                <MenuItem Header="Software"></MenuItem>
 
-                <TextBlock Text="Welcome to the EMS Portal. This system allows you to manage students, batches, rooms, courses, and exam schedules with ease."
-                           FontSize="14"
-                           Foreground="#34495e"
-                           TextAlignment="Center"
-                           TextWrapping="Wrap"
-                           Margin="0,0,0,30"
-                           Width="400"/>
+            </MenuItem>
 
-                <Button Content="Get Started"
-                        Width="150"
-                        Height="40"
-                        FontWeight="Bold"
-                        Background="#3498db"
-                        Foreground="White"
-                        Cursor="Hand"/>
-            </StackPanel>
-        </Border>
+            <MenuItem Header="Contact us"></MenuItem>
 
-    </Grid>
+            <MenuItem Header="About Us"></MenuItem>
+        </Menu>
+        </DockPanel>
 </Window>

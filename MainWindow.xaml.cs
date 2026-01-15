@@ -24,5 +24,12 @@ namespace SubsrciptionSystem
         {
             InitializeComponent();
         }
+
+        private void EmailMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Email emailWindow = new Email();
+            emailWindow.Show();
+            this.Close();
+        }
     }
 }

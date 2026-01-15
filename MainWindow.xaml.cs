@@ -33,7 +33,12 @@ namespace SubsrciptionSystem
             this.Close();
         }
 
-        
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
 
     }
 }

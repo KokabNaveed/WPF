@@ -10,8 +10,8 @@
         Icon="/Images/icons8-info-48.png"
         WindowStartupLocation="CenterScreen">
 
-        <DockPanel>
-            <Label HorizontalContentAlignment="Center" Name="welcome" Content="Welcome To Subscription System" Background="Black" Foreground="White" Height="200"  DockPanel.Dock="Top" ></Label>
+    <DockPanel LastChildFill="True">
+        <Label HorizontalContentAlignment="Center" Name="welcome" Content="Welcome To Subscription System" Background="Black" Foreground="White"   DockPanel.Dock="Top" ></Label>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Services">
                 <MenuItem Header="Email" Click="EmailMenu_Click"></MenuItem>
@@ -26,6 +26,9 @@
             <MenuItem Header="Domain" Click="DomainMenu_Click"></MenuItem>
 
             <MenuItem Header="Software" Click="SoftwareMenu_Click"></MenuItem>
+            <MenuItem Header="Exit" Click="exit_Click"></MenuItem>
+
         </Menu>
-        </DockPanel>
+        <WrapPanel DockPanel.Dock="Top"></WrapPanel>
+    </DockPanel>
 </Window>

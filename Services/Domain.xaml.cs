@@ -20,8 +20,7 @@ namespace SubsrciptionSystem
             if (dpRegisteredDate.SelectedDate != null)
             {
                 // Auto-set renewal date to 1 year later
-                dpRenewalDate.SelectedDate =
-                    dpRegisteredDate.SelectedDate.Value.AddYears(1);
+                dpRenewalDate.SelectedDate = dpRegisteredDate.SelectedDate.Value.AddYears(1);
             }
 
             txtAutoRenewStatus.Text = "ON";
@@ -54,7 +53,7 @@ namespace SubsrciptionSystem
 
             DateTime registeredDate = dpRegisteredDate.SelectedDate.Value;
 
-            // AUTO RENEW ON → system controls renewal date
+            //AUTO RENEW ON → system controls renewal date
             if (isAutoRenew)
             {
                 dpRenewalDate.SelectedDate = registeredDate.AddYears(1);

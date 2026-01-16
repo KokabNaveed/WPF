@@ -31,7 +31,6 @@ namespace SubsrciptionSystem
 
         private void tglAutoRenew_Unchecked(object sender, RoutedEventArgs e)
         {
-            // Allow manual editing
             txtAutoRenewStatus.Text = "OFF";
             dpRenewalDate.IsEnabled = true;
         }
@@ -44,16 +43,13 @@ namespace SubsrciptionSystem
 
             if (dpRegisteredDate.SelectedDate == null || txtDomainName.Text == null || txtdomainRegistrar.Text == null || txtdns2.Text == null || txtdns1.Text == null || txtamount.Text==null)
             {
-                MessageBox.Show("Please Enter all details.",
-                                "Validation Error",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
+                MessageBox.Show("Please Enter all details.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             DateTime registeredDate = dpRegisteredDate.SelectedDate.Value;
 
-            //AUTO RENEW ON → system controls renewal date
+            // AUTO RENEW ON => system controls renewal date
             if (isAutoRenew)
             {
                 dpRenewalDate.SelectedDate = registeredDate.AddYears(1);
@@ -61,10 +57,7 @@ namespace SubsrciptionSystem
 
             if (dpRenewalDate.SelectedDate == null)
             {
-                MessageBox.Show("Please select renewal date.",
-                                "Validation Error",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
+                MessageBox.Show("Please select renewal date.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -72,10 +65,7 @@ namespace SubsrciptionSystem
 
             if (renewalDate <= registeredDate)
             {
-                MessageBox.Show("Renewal date must be later than registered date.",
-                                "Invalid Date",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
+                MessageBox.Show("Renewal date must be later than registered date.", "Invalid Date", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -98,24 +88,17 @@ namespace SubsrciptionSystem
                 db.SaveChanges();
             }
 
-            MessageBox.Show("Domain saved successfully!",
-                            "Success",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Information);
+            MessageBox.Show("Domain saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             if (!isAutoRenew)
             {
-                MessageBox.Show("Auto-renew is OFF. Please renew before expiry.",
-                                "Reminder",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
+                MessageBox.Show("Auto Renew is OFF. Please renew before expiry.", "Reminder", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
-
 
     }
 }

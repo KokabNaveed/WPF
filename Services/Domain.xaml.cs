@@ -41,7 +41,12 @@ namespace SubsrciptionSystem
         {
             bool isAutoRenew = tglAutoRenew.IsChecked == true;
 
-            if (dpRegisteredDate.SelectedDate == null || txtDomainName.Text == null || txtdomainRegistrar.Text == null || txtdns2.Text == null || txtdns1.Text == null || txtamount.Text==null)
+            if (dpRegisteredDate.SelectedDate == null ||
+                string.IsNullOrWhiteSpace(txtDomainName.Text) ||
+                string.IsNullOrWhiteSpace(txtdomainRegistrar.Text) ||
+                string.IsNullOrWhiteSpace(txtdns1.Text) ||
+                string.IsNullOrWhiteSpace(txtdns2.Text) ||
+                string.IsNullOrWhiteSpace(txtamount.Text))
             {
                 MessageBox.Show("Please Enter all details.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -69,24 +74,35 @@ namespace SubsrciptionSystem
                 return;
             }
 
+            if (!decimal.TryParse(txtamount.Text, out decimal amount) || amount <= 0)
+            {
+                MessageBox.Show(
+                    "Please enter a valid amount.",
+                    "Validation Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                );
+                return;
+            }
 
             using (var db = new AppDbContext())
             {
                 var domain = new DomainEntity
                 {
-                    DomainName = txtDomainName.Text,
-                    Registrar = txtdomainRegistrar.Text,
+                    DomainName = txtDomainName.Text.Trim(),
+                    Registrar = txtdomainRegistrar.Text.Trim(),
                     RegisteredDate = dpRegisteredDate.SelectedDate.Value,
                     RenewalDate = dpRenewalDate.SelectedDate.Value,
-                    NameServer1 = txtdns1.Text,
-                    NameServer2 = txtdns2.Text,
-                    Amount = decimal.Parse(txtamount.Text),
-                    AutoRenew = tglAutoRenew.IsChecked == true
+                    NameServer1 = txtdns1.Text.Trim(),
+                    NameServer2 = txtdns2.Text.Trim(),
+                    Amount = amount,
+                    AutoRenew = isAutoRenew
                 };
 
                 db.Domains.Add(domain);
                 db.SaveChanges();
             }
+
 
             MessageBox.Show("Domain saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 

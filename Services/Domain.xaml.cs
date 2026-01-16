@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using SubsrciptionSystem.Models;
 
 namespace SubsrciptionSystem
 {
@@ -46,6 +36,7 @@ namespace SubsrciptionSystem
             txtAutoRenewStatus.Text = "OFF";
             dpRenewalDate.IsEnabled = true;
         }
+
 
 
         private void Submit_Click(object sender, RoutedEventArgs e)
@@ -89,16 +80,27 @@ namespace SubsrciptionSystem
                 return;
             }
 
-            string message =
-                $"Domain: {txtDomainName.Text}\n" +
-                $"Registered Date: {registeredDate:d}\n" +
-                $"Renewal Date: {renewalDate:d}\n" +
-                $"Auto Renew: {(isAutoRenew ? "ON" : "OFF")}\n" +
-                $"Registrar: {txtdomainRegistrar.Text}\n" +
-                $"Amount: {txtamount.Text}";
 
-            MessageBox.Show(message,
-                            "Domain Saved",
+            using (var db = new AppDbContext())
+            {
+                var domain = new DomainEntity
+                {
+                    DomainName = txtDomainName.Text,
+                    Registrar = txtdomainRegistrar.Text,
+                    RegisteredDate = dpRegisteredDate.SelectedDate.Value,
+                    RenewalDate = dpRenewalDate.SelectedDate.Value,
+                    NameServer1 = txtdns1.Text,
+                    NameServer2 = txtdns2.Text,
+                    Amount = decimal.Parse(txtamount.Text),
+                    AutoRenew = tglAutoRenew.IsChecked == true
+                };
+
+                db.Domains.Add(domain);
+                db.SaveChanges();
+            }
+
+            MessageBox.Show("Domain saved successfully!",
+                            "Success",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
 

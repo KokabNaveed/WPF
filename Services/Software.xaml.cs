@@ -24,11 +24,52 @@ namespace SubsrciptionSystem
             InitializeComponent();
         }
 
+        private void cmbPlan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbPlan.SelectedItem is ComboBoxItem selected)
+            {
+                switch (selected.Content.ToString())
+                {
+                    case "Free":
+                        txtamount.Text = "0";
+                        dpRenewalDate.IsEnabled = false;
+                        break;
+
+                    case "Monthly":
+                        txtamount.Text = "10";
+                        dpRenewalDate.IsEnabled = true;
+                        break;
+
+                    case "Yearly":
+                        txtamount.Text = "100";
+                        dpRenewalDate.IsEnabled = true;
+                        break;
+                }
+            }
+        }
+
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (dpSubscribeddate.SelectedDate == null ||dpRenewalDate.SelectedDate == null || txtamount.Text == null || txtemail.Text == null || txtSoftwareName.Text == null || cmbCategory.Text == null || cmbPlan.Text == null)
+            if (dpSubscribeddate.SelectedDate == null ||dpRenewalDate.SelectedDate == null  || txtemail.Text == null || txtSoftwareName.Text == null || cmbCategory.SelectedItem == null || cmbPlan.SelectedItem == null)
             {
                 MessageBox.Show("Please Enter all details.",
+                                "Validation Error",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+            if (cmbPlan.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please select a Plan Type.",
+                                "Validation Error",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+
+            if (cmbCategory.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please select a Category.",
                                 "Validation Error",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);

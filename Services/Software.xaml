@@ -56,14 +56,20 @@
 
                     <TextBlock Text="Plan Type" FontSize="12"/>
                     <ComboBox x:Name="cmbPlan"
-                         Height="36"
-                         Margin="0,6,0,14"
-                             Padding="10" >
+          Height="36"
+          Margin="0,6,0,14"
+          IsEditable="False"
+          SelectedIndex="0"
+          SelectionChanged="cmbPlan_SelectionChanged">
+
+                        <ComboBoxItem Content="Select Plan" IsEnabled="False"/>
                         <ComboBoxItem Content="Free"/>
                         <ComboBoxItem Content="Monthly"/>
                         <ComboBoxItem Content="Yearly"/>
                     </ComboBox>
-                    
+
+
+
                     <TextBlock Text="Email Subscribed With" FontSize="12"/>
                     <TextBox x:Name="txtemail" Height="36" Margin="0,6,0,14" Padding="10"/>
 
@@ -77,13 +83,17 @@
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="15,0,0,0">
                     <TextBlock Text="Category" FontSize="12"/>
                     <ComboBox x:Name="cmbCategory"
-                          Height="36"
-                          Margin="0,6,0,14"
-                              Padding="10" >
+          Height="36"
+          Margin="0,6,0,14"
+          IsEditable="False"
+          SelectedIndex="0">
+
+                        <ComboBoxItem Content="Select Category" IsEnabled="False"/>
                         <ComboBoxItem Content="Software"/>
                         <ComboBoxItem Content="Accounting"/>
                         <ComboBoxItem Content="Enterprise"/>
                     </ComboBox>
+
                     <TextBlock Text="Amount($)" FontSize="12"/>
                     <TextBox x:Name="txtamount" Height="36" Margin="0,6,0,14" Padding="10"/>
 

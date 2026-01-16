@@ -4,15 +4,19 @@
         Title="Email"
         Height="600"
         Width="800"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Border Width="620"
                 Padding="25"
                 CornerRadius="14"
                 Background="White"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+                HorizontalAlignment="Center" Grid.Column="1">
 
             <Grid>
                 <!-- Columns -->
@@ -49,19 +53,19 @@
 
                     <TextBlock Text="First Name" FontSize="12"/>
                     <TextBox x:Name="txtFName"
-                             Height="36"
+                             Height="38"
                              Margin="0,6,0,14"
                              Padding="10"/>
 
                     <TextBlock Text="Email Address" FontSize="12"/>
                     <TextBox x:Name="txtEmail"
-                             Height="36"
+                             Height="38"
                              Margin="0,6,0,14"
                              Padding="10"/>
 
                     <TextBlock Text="Storage (GB)" FontSize="12"/>
                     <TextBox x:Name="txtStorage"
-                             Height="36"
+                             Height="38"
                              Margin="0,6,0,14"
                              Padding="10"/>
                 </StackPanel>
@@ -71,19 +75,19 @@
 
                     <TextBlock Text="Last Name" FontSize="12"/>
                     <TextBox x:Name="txtLName"
-                             Height="36"
+                             Height="38"
                              Margin="0,6,0,14"
                              Padding="10"/>
 
                     <TextBlock Text="Company" FontSize="12"/>
                     <TextBox x:Name="txtcompany"
-                             Height="36"
+                             Height="38"
                              Margin="0,6,0,14"
                              Padding="10"/>
 
                     <TextBlock Text="Password" FontSize="12"/>
                     <PasswordBox x:Name="txtpassword"
-                                 Height="36"
+                                 Height="38"
                                  Margin="0,6,0,14"
                                  Padding="10"/>
                 </StackPanel>

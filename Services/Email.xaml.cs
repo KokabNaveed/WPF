@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Windows;
+using SubsrciptionSystem.Models;
 
 namespace SubsrciptionSystem
 {
@@ -16,6 +17,31 @@ namespace SubsrciptionSystem
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtFName.Text) ||
+                    string.IsNullOrWhiteSpace(txtLName.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(txtcompany.Text) ||
+                    string.IsNullOrWhiteSpace(txtStorage.Text) ||
+                    string.IsNullOrWhiteSpace(txtpassword.Password))
+            {
+                MessageBox.Show("Please Enter all details.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // positive and a number
+
+            if (!int.TryParse(txtStorage.Text, out int storageGb) || storageGb <= 0)
+            {
+                MessageBox.Show(
+                    "Storage must be a positive number.",
+                    "Validation Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                );
+                return;
+            }
+
             string firstName = txtFName.Text;
             string lastName = txtLName.Text;
             string email = txtEmail.Text;
@@ -23,18 +49,27 @@ namespace SubsrciptionSystem
             string storage = txtStorage.Text;
             string password = txtpassword.Password;
 
-            StringBuilder details = new StringBuilder();
-            details.AppendLine("Submitted Details:");
-            details.AppendLine($"First Name: {firstName}");
-            details.AppendLine($"Last Name: {lastName}");
-            details.AppendLine($"Email: {email}");
-            details.AppendLine($"Company: {company}");
-            details.AppendLine($"Storage (GB): {storage}");
-            details.AppendLine($"Password: {password}");
+
+            using (var db = new AppDbContext())
+            {
+                var emailEntity = new EmailEntity
+                {
+                    FirstName = txtFName.Text.Trim(),
+                    LastName = txtLName.Text.Trim(),
+                    EmailAddress = txtEmail.Text.Trim(),
+                    Company = txtcompany.Text.Trim(),
+                    Password = txtpassword.Password.Trim(),
+                    StorageGB = storageGb,
+                };
+
+                db.EmailUser.Add(emailEntity);
+                db.SaveChanges();
+            }
+
 
             MessageBox.Show(
-                details.ToString(),
-                "Form Submitted",
+                "Data saved successfully!",
+                "Success",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information
             );

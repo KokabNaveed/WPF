@@ -65,6 +65,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\AppDbContext.cs" />
+    <Compile Include="Migrations\202601161057119_InitialCreate.cs" />
+    <Compile Include="Migrations\202601161057119_InitialCreate.Designer.cs">
+      <DependentUpon>202601161057119_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DomainEntity.cs" />
+    <Compile Include="Models\EmailEntity.cs" />
+    <Compile Include="Models\SoftwareEntity.cs" />
     <Compile Include="Services\Domain.xaml.cs">
       <DependentUpon>Domain.xaml</DependentUpon>
     </Compile>
@@ -113,6 +122,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202601161057119_InitialCreate.resx">
+      <DependentUpon>202601161057119_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -129,6 +141,7 @@
   <ItemGroup>
     <Resource Include="Images\icons8-info-48.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

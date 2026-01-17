@@ -82,9 +82,14 @@ namespace SubsrciptionSystem
                 return;
             }
 
-            if (!txtemail.Text.Contains("@"))
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(txtemail.Text, emailPattern))
             {
-                MessageBox.Show("Invalid email format");
+                MessageBox.Show(
+                    "Please enter a valid email address.",
+                    "Validation Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 

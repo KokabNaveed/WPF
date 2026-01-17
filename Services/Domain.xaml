@@ -53,26 +53,28 @@
                 <!-- LEFT COLUMN -->
                 <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,15,0">
                     <TextBlock Text="Domain Name" FontSize="12"/>
-                    <TextBox x:Name="txtDomainName" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtDomainName" Height="38" PreviewTextInput="OnlyLetters" Margin="0,6,0,14" Padding="10"/>
 
                     <TextBlock Text="Domain Registered Date" FontSize="12"/>
-                    <DatePicker x:Name="dpRegisteredDate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    <DatePicker x:Name="dpRegisteredDate" Height="38" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    
                     <TextBlock Text="Renewal Date" FontSize="12"/>
-                    <DatePicker x:Name="dpRenewalDate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    <DatePicker x:Name="dpRenewalDate" Height="38" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    
                     <TextBlock Text="Domain Nameservers2" FontSize="12"/>
-                    <TextBox x:Name="txtdns2" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtdns2" Height="38" PreviewTextInput="OnlyLetters" Margin="0,6,0,14" Padding="10"/>
                 </StackPanel>
 
                 <!-- RIGHT COLUMN -->
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="15,0,0,0">
                     <TextBlock Text="Domain Registrar" FontSize="12"/>
-                    <TextBox x:Name="txtdomainRegistrar" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtdomainRegistrar" Height="38" PreviewTextInput="OnlyLetters" Margin="0,6,0,14" Padding="10"/>
 
                     <TextBlock Text="Amount($)" FontSize="12"/>
-                    <TextBox x:Name="txtamount" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtamount" Height="38" Margin="0,6,0,14" Padding="10"/>
 
                     <TextBlock Text="Domain Nameservers1" FontSize="12"/>
-                    <TextBox x:Name="txtdns1" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtdns1" Height="38" PreviewTextInput="OnlyLetters" Margin="0,6,0,14" Padding="10"/>
 
                     <StackPanel Margin="0,6,0,14">
                         <TextBlock Text="Auto Renew" FontSize="12" Margin="0,0,0,6"/>

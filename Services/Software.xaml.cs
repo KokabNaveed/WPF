@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using SubsrciptionSystem.Models;
 
 namespace SubsrciptionSystem
@@ -14,35 +16,34 @@ namespace SubsrciptionSystem
         {
             InitializeComponent();
         }
+        private void OnlyLetters(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !Regex.IsMatch(e.Text, @"^[A-Za-z]+$");
+        }
 
         private void cmbPlan_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cmbPlan.SelectedItem is ComboBoxItem selected &&
-                dpSubscribeddate.SelectedDate != null)
+            if (cmbPlan.SelectedItem is ComboBoxItem selected)
             {
-                DateTime startDate = dpSubscribeddate.SelectedDate.Value;
-
                 switch (selected.Content.ToString())
                 {
                     case "Free":
                         txtamount.Text = "0";
-                        txtamount.IsEnabled = false;
+                        txtamount.IsReadOnly = false;
                         dpRenewalDate.SelectedDate = null;
                         dpRenewalDate.IsEnabled = false;
                         break;
 
                     case "Monthly":
                         txtamount.Text = "10";
-                        txtamount.IsEnabled = false;
+                        txtamount.IsReadOnly = false;
                         dpRenewalDate.IsEnabled = false;
-                        dpRenewalDate.SelectedDate = startDate.AddMonths(1);
                         break;
 
                     case "Yearly":
                         txtamount.Text = "100";
-                        txtamount.IsEnabled = false;
+                        txtamount.IsReadOnly = false;
                         dpRenewalDate.IsEnabled = false;
-                        dpRenewalDate.SelectedDate = startDate.AddYears(1);
                         break;
                 }
             }
@@ -62,6 +63,7 @@ namespace SubsrciptionSystem
                 return;
             }
 
+
             if (cmbPlan.SelectedIndex == 0)
             {
                 MessageBox.Show("Please select a Plan Type.",
@@ -80,19 +82,16 @@ namespace SubsrciptionSystem
                 return;
             }
 
-            string plan = cmbPlan.Text;
-
-            if (plan != "Free" && dpRenewalDate.SelectedDate == null)
+            if (!txtemail.Text.Contains("@"))
             {
-                MessageBox.Show("Renewal date is required for paid plans.",
-                                "Validation Error",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
+                MessageBox.Show("Invalid email format");
                 return;
             }
 
+            string plan = cmbPlan.Text;
 
-            if (!decimal.TryParse(txtamount.Text, out decimal amount) || amount <= 0)
+
+            if (!decimal.TryParse(txtamount.Text, out decimal amount))
             {
                 MessageBox.Show(
                     "Please enter a valid amount.",
@@ -119,7 +118,8 @@ namespace SubsrciptionSystem
             {
                 dpRenewalDate.SelectedDate = null;
             }
-            DateTime renewalDate = dpRenewalDate.SelectedDate.Value;
+
+            DateTime? renewalDate = dpRenewalDate.SelectedDate;
 
 
             using (var db = new AppDbContext())
@@ -129,7 +129,7 @@ namespace SubsrciptionSystem
                     SoftwareName = txtSoftwareName.Text.Trim(),
                     Email = txtemail.Text.Trim(),
                     SubscribedDate = dpSubscribeddate.SelectedDate.Value,
-                    RenewalDate = dpRenewalDate.SelectedDate.Value,
+                    RenewalDate = dpRenewalDate.SelectedDate,
                     Category = cmbCategory.Text.Trim(),
                     PlanType = cmbPlan.Text.Trim(),
                     Amount = amount,

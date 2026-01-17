@@ -52,11 +52,11 @@
                 <!-- LEFT COLUMN -->
                 <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,15,0">
                     <TextBlock Text="Software Name" FontSize="12"/>
-                    <TextBox x:Name="txtSoftwareName" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtSoftwareName" Height="38" Margin="0,6,0,14" Padding="10" PreviewTextInput="OnlyLetters"/>
 
                     <TextBlock Text="Plan Type" FontSize="12"/>
                     <ComboBox x:Name="cmbPlan"
-          Height="36"
+          Height="38"
           Margin="0,6,0,14"
           IsEditable="False"
           SelectedIndex="0"
@@ -71,10 +71,10 @@
 
 
                     <TextBlock Text="Email Subscribed With" FontSize="12"/>
-                    <TextBox x:Name="txtemail" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtemail" Height="38" Margin="0,6,0,14" Padding="10"/>
 
                     <TextBlock Text="Renewal Date" FontSize="12"/>
-                    <DatePicker x:Name="dpRenewalDate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    <DatePicker x:Name="dpRenewalDate" Height="38" Margin="0,6,0,14" SelectedDateFormat="Short"/>
                     
 
                 </StackPanel>
@@ -83,7 +83,7 @@
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="15,0,0,0">
                     <TextBlock Text="Category" FontSize="12"/>
                     <ComboBox x:Name="cmbCategory"
-          Height="36"
+          Height="38"
           Margin="0,6,0,14"
           IsEditable="False"
           SelectedIndex="0">
@@ -95,10 +95,10 @@
                     </ComboBox>
 
                     <TextBlock Text="Amount($)" FontSize="12"/>
-                    <TextBox x:Name="txtamount" Height="36" Margin="0,6,0,14" Padding="10"/>
+                    <TextBox x:Name="txtamount" Height="38" Margin="0,6,0,14" Padding="10"/>
 
                     <TextBlock Text="Subscribed Date" FontSize="12"/>
-                    <DatePicker x:Name="dpSubscribeddate" Height="36" Margin="0,6,0,14" SelectedDateFormat="Short"/>
+                    <DatePicker x:Name="dpSubscribeddate" Height="38" Margin="0,6,0,14" SelectedDateFormat="Short"/>
                 </StackPanel>
 
                 <!-- SUBMIT BUTTON -->

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Input;
 using SubsrciptionSystem.Models;
 
 namespace SubsrciptionSystem
@@ -13,6 +15,11 @@ namespace SubsrciptionSystem
         public Domain()
         {
             InitializeComponent();
+        }
+
+        private void OnlyLetters(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !Regex.IsMatch(e.Text, @"^[A-Za-z]+$");
         }
 
         private void tglAutoRenew_Checked(object sender, RoutedEventArgs e)

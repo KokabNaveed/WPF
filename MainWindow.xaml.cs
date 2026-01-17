@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 
 namespace SubsrciptionSystem
 {
@@ -39,6 +40,34 @@ namespace SubsrciptionSystem
         }
 
 
+        private void SoftwareData_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                dataGrid.ItemsSource = db.Softwares.ToList();
+            }
+
+            dataGrid.Visibility = Visibility.Visible;
+        }
+        private void EmailData_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                dataGrid.ItemsSource = db.EmailUser.ToList();
+            }
+
+            dataGrid.Visibility = Visibility.Visible;
+        }
+        private void DomainData_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+
+                dataGrid.ItemsSource = db.Domains.ToList();
+            }
+
+            dataGrid.Visibility = Visibility.Visible;
+        }
 
     }
 }
